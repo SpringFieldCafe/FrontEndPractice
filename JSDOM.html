@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSDOM</title>
+</head>
+<body>
+    <div id="box1">这是一个id选择器</div>
+    <div class="box2">这是一个class选择器</div>
+    <div>普通的div</div>
+    <!-- <a href="#">这是一个链接</a> -->
+    <button>点击按钮</button>
+    <script>
+        var element_id=document.getElementById('box1');
+        console.log(element_id);
+        var element_class=document.getElementsByClassName('box2');
+        console.log(element_class);
+        var element_tag=document.getElementsByTagName("div")[2];
+        console.log(element_tag);
+        //Error: element_id.innerHTML("这是一个修改后的id选择器");
+        element_id.innerHTML='<a href="#">这是一个链接</a>';
+        element_class.innerText="这是一个修改后的class选择器";
+        element_tag.style.color='aqua';
+        element_tag.style.fontSize='20px';
+
+        var button_element=document.getElementsByTagName("button")[0];
+        console.log(button_element);
+        button_element.onclick=function(){
+            alert("按钮被点击了");
+        }
+        button_element.addEventListener("click",function(){
+            alert("通过addEventListener点击了");
+        })
+    </script>
+</body>
+</html>
